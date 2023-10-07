@@ -31,11 +31,10 @@ pub struct FilterCondition {
 
 impl FilterCondition {
     fn is_match (&self, el: &FilterCondition) -> bool {
-        el.hamsters > 4
+        el.hamsters >= self.hamsters
     }
 }
-//                                               I don't understand why this function should take a second argument,
-//                                               just so that it can use the is_match which is common to all struct instances.
+
 pub fn custom_filter (vec: Vec<FilterCondition>, filter_condition: &FilterCondition) -> Vec<FilterCondition>{
     vec.into_iter()
         .filter(|el| filter_condition.is_match(el))
